@@ -1,12 +1,12 @@
-import express from 'express';
+import express, {Request, Response} from 'express';
 const app = express();
-const port = process.env.PORT || 3000;
-import db from './models';
-import {users} from './seeders/users';
-import {projects} from './seeders/projects'
-import {projectassignments} from './seeders/projectassignments'
+const port =  3000;
+import db from './src/models';
+// import {users} from './src/seeders/users';
+// import {projects} from './src/seeders/projects'
+// import {projectassignments} from './src/seeders/projectassignments'
 
-app.get('/', (req, res) => {
+app.get('/', (req:Request, res:Response) => {
     db.User.findAll({
         include: {
             model: db.Project
@@ -16,6 +16,8 @@ app.get('/', (req, res) => {
 
 
 db.sequelize.sync().then(() => {
+    console.log("connected");
+    
     app.listen(port, () => {
         console.log(`App listening on port ${port}`)
     })

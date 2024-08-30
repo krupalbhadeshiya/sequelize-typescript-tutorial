@@ -1,0 +1,11 @@
+const path = require('path');
+
+// Adjust path to your actual config.json location
+const configPath = path.resolve(__dirname, 'src', 'config', 'config.json');
+
+module.exports = {
+  config: configPath,
+  'models-path': path.resolve(__dirname, 'src', 'models'),
+  'seeders-path': path.resolve(__dirname, 'src', 'seeders'),
+  'migrations-path': path.resolve(__dirname, 'src', 'migrations'),
+};
